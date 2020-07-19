@@ -3,7 +3,8 @@ name: Java CI
 on: [push]
 
 jobs:
-  build:
+  jobs1:
+    name: build
     runs-on: ubuntu-latest
 
     steps:
@@ -14,18 +15,15 @@ jobs:
           java-version: 1.8
       - name: Build with Maven
         run: mvn -B package --file pom.xml
-      - name: remote ssh command
-
-  
-jobs:
-  name: Build
-    steps:
-    - name: executing remote ssh commands using ssh key zome
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.HOST }}
-        username: ${{ secrets.USERNAME }}
-        key: ${{ secrets.SSH_KEY }}
-        port: ${{ secrets.PORT }}
-        script: |
-          whoami
+  jobs2:
+      name: executing remote ssh commands using ssh key zome
+      runs-on: ubuntu-latest
+      steps:
+      - uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.PORT }}
+          script: |
+            whoami
