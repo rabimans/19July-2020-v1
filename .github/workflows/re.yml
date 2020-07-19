@@ -17,10 +17,8 @@ jobs:
       - name: remote ssh command
 
   
-  jobs:
-
- 
-    name: Build
+jobs:
+  name: Build
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using ssh key zome
